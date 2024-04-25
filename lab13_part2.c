@@ -61,7 +61,11 @@ void matrix_power_with_validation(int n, double A[MAX_SIZE][MAX_SIZE], int k, do
     double temp[MAX_SIZE][MAX_SIZE];
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            temp[i][j] = (i == j) ? 1.0 : 0.0;
+            if (i == j) {
+                temp[i][j] = 1.0;
+            } else {
+                temp[i][j] = 0.0;
+            }
         }
     }
 
@@ -92,6 +96,7 @@ void matrix_power_with_validation(int n, double A[MAX_SIZE][MAX_SIZE], int k, do
         }
     }
 }
+
 
 // Function to print a double matrix
 void print_matrix(int n, double matrix[MAX_SIZE][MAX_SIZE]) {
