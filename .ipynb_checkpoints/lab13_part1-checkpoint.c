@@ -56,12 +56,16 @@ void matrix_power(int n, int A[MAX_SIZE][MAX_SIZE], int k, int result[MAX_SIZE][
     int temp[MAX_SIZE][MAX_SIZE];
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            temp[i][j] = (i == j) ? 1 : 0;
+            if (i == j) {
+                temp[i][j] = 1;
+            } else {
+                temp[i][j] = 0;
+            }
         }
     }
 
     // Multiply the matrix k times
-    for (int i = 0; i < k; i++) {
+    for (int iteration = 0; iteration < k; iteration++) {
         int new_result[MAX_SIZE][MAX_SIZE];
         multiply_matrices(n, temp, A, new_result);
 
@@ -73,13 +77,14 @@ void matrix_power(int n, int A[MAX_SIZE][MAX_SIZE], int k, int result[MAX_SIZE][
         }
     }
 
-    // Copy final result to the output
+    // Copy the final result output
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             result[i][j] = temp[i][j];
         }
     }
 }
+
 
 // Function to print a matrix
 void print_matrix(int n, int matrix[MAX_SIZE][MAX_SIZE]) {
