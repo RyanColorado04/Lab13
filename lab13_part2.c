@@ -7,19 +7,19 @@
 
 
 /*
-A Markov chain's transition matrix M has non-negative real numbers that represent the probabilities of transitioning between states. For each row i in the transition matrix, the sum of all probabilities must be 1. This shows the fact that the total probability of transitioning to any state from i must be 100%.
+A Markov chain's transition matrix M has nonnegative real numbers that represent the probabilities of transitioning between states. For each row i in the transition matrix, the sum of all probabilities must be 1. This is because the total probability of transitioning to any state from i must be 100%.
 
 Question 1:
 M^k is a Markov chain for any positive integer k because given each row in M sums to 1, the same holds true for M^k.
 
-When you multiply matrices to obtain M^k , you are considering the combined probabilities of transitioning through multiple steps. Since each row of M^k still sums to 1, it maintains the properties of a Markov chain.
+When you multiply matrices to obtain M^k , you are considering the combined probabilities of transitioning through multiple steps. Since each row of M^k still sums to 1, it maintains the properties of a Markov chain. I show this in my code below.
 
 Question 2:
-The (i, j)-entry of M^k represents the probability of transitioning from state i to state j in k steps.
+The (i, j)-entry of M^k computes the probability of transitioning from state i to state j in k steps.
 */
 
 
-// Function to multiply two doubles matrices
+// Function to multiply two double matrices
 void multiply_matrices(int n, double A[MAX_SIZE][MAX_SIZE], double B[MAX_SIZE][MAX_SIZE], double result[MAX_SIZE][MAX_SIZE]) {
     // Initialize the result matrix to zero
     for (int i = 0; i < n; i++) {
@@ -38,16 +38,16 @@ void multiply_matrices(int n, double A[MAX_SIZE][MAX_SIZE], double B[MAX_SIZE][M
     }
 }
 
-// Function to check if each row in a matrix sums to 1 and a valid Markov chain
+// Function to check if each row in a matrix sums to 1 and is a valid Markov chain
 bool is_valid_markov_chain(int n, double matrix[MAX_SIZE][MAX_SIZE]) {
-    const double tolerance = 0.0001; // Error tolerance for floating point errors
+    const double tolerance = 0.0001; // Small error tolerance for floating point errors
     for (int i = 0; i < n; i++) {
         double row_sum = 0.0;
         for (int j = 0; j < n; j++) {
             row_sum += matrix[i][j];
         }
         
-        // If any row doesn't sum to 1, it's invalid
+        // If any row doesn't sum to 1 then it is invalid
         if (fabs(row_sum - 1.0) > tolerance) {
             return false;
         }
@@ -93,7 +93,7 @@ void matrix_power_with_validation(int n, double A[MAX_SIZE][MAX_SIZE], int k, do
     }
 }
 
-// Function to print a double-precision matrix
+// Function to print a double matrix
 void print_matrix(int n, double matrix[MAX_SIZE][MAX_SIZE]) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {

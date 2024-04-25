@@ -73,7 +73,7 @@ void matrix_power(int n, int A[MAX_SIZE][MAX_SIZE], int k, int result[MAX_SIZE][
         }
     }
 
-    // Copy the final result to the output
+    // Copy final result to the output
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             result[i][j] = temp[i][j];
